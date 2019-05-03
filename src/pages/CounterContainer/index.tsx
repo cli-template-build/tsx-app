@@ -90,13 +90,13 @@ class CounterContainer extends React.Component<CounterContainerCheckProps, {}> {
       countTimer,
     } = this.props;
     return (
-        <div>
-          <Counter {...{
-            onIncrement, onDecrement, onIncrementAsync, onIncrementAsyncOnce, counter, onProxyWeather,
-          }} />
-          <button onClick={onShowCountTimer}>点击显示</button>
-          <CountTimer show={countTimer.show}/>
-        </div>
+      <div>
+        <Counter {...{
+          onIncrement, onDecrement, onIncrementAsync, onIncrementAsyncOnce, counter, onProxyWeather,
+        }} />
+        <button onClick={onShowCountTimer}>点击显示</button>
+        <CountTimer show={countTimer.show}/>
+      </div>
     );
   }
 }
