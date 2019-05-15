@@ -32,14 +32,13 @@
     "cz-conventional-changelog": "^2.1.0",
     "commitizen": "^3.0.7",
     "antd": "^3.13.6",
-    "npm-check-updates": "^2.15.0"
+    "npm-check-updates": "^3.1.9"
   },
   "homepage": "https://github.com/yanlele/tsx-app#readme",
   "devDependencies": {
     "@types/node": "^10.12.29",
     "antd": "^3.13.6",
     "autoprefixer": "^9.1.0",
-    "npm-check-updates": "^2.15.0",
     "babel-core": "^6.23.1",
     "babel-eslint": "8.0.1",
     "babel-loader": "^7.1.4",
@@ -80,6 +79,7 @@
     "nodemon": "^1.11.0",
     "normalize.css": "^8.0.0",
     "normalizr": "^3.2.2",
+    "npm-check-updates": "^3.1.9",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^3.0.0",
     "poststylus": "^1.0.0",
@@ -105,6 +105,7 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.16.5",
     "webpack-api-mocker2": "^1.5.5",
+    "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5",
     "webpack-merge": "^4.1.0"
   },
@@ -141,7 +142,6 @@
     "tslint-react": "^3.6.0",
     "typescript": "^3.0.3",
     "uglifyjs-webpack-plugin": "^2.1.2",
-    "webpack-cli": "^3.1.0",
     "webrtc-adapter": "^7.2.1"
   }
 }
