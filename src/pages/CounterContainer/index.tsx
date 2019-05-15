@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Button} from "antd";
 import {connect} from 'react-redux';
 import Counter from 'components/Counter';
 import CountTimer from 'components/CountTimer';
@@ -94,7 +95,7 @@ class CounterContainer extends React.Component<CounterContainerCheckProps, {}> {
         <Counter {...{
           onIncrement, onDecrement, onIncrementAsync, onIncrementAsyncOnce, counter, onProxyWeather,
         }} />
-        <button onClick={onShowCountTimer}>点击显示</button>
+        <Button onClick={onShowCountTimer}>点击显示</Button>
         <CountTimer show={countTimer.show}/>
       </div>
     );

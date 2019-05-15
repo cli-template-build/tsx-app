@@ -1,26 +1,48 @@
-import * as React from 'react';
+import React, {FunctionComponent, useCallback, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import {Button, Select} from 'antd';
+import {Button, Select, Input} from 'antd';
 
 const {Option} = Select;
 
-class HomeContainer extends React.Component<{}, {}> {
+interface SelectItem {
+  value: string;
+  id: number;
+}
 
-  render() {
-    const arr: any[] = [];
+const HomeContainer: FunctionComponent = () => {
+  const [name, updateName] = useState<string>('');
 
-    return (
+  useEffect(() => {
+    console.log(name);
+    return () => {
+      console.log('componentWillUnmount');
+    };
+  }, [name]);
+
+  const arr: SelectItem[] = [{
+    value: 'yanle',
+    id: 1,
+  }];
+
+  const handleSelectChange = useCallback((value: number) => {
+    updateName(value.toString());
+  }, []);
+
+  const handleInputChange = (e: any) => updateName(e.target.value);
+
+  return (
       <div>
         <p>首页内容 ~ ^.^ ~</p>
-        <div ref='radarChart'/>
         <Button onClick={() => console.log('123')}>click</Button>
         <Button>你好</Button>
-        <Select style={{width: '300px'}}>
+        <Select style={{width: '300px'}} onChange={handleSelectChange}>
           {arr.map((item: any) => (<Option key={item.value} value={item.id}>{item.value}</Option>))}
         </Select>
+
+        <br/>
+        <Input value={name} onChange={handleInputChange}/>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default connect()(HomeContainer);
