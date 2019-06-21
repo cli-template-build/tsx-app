@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const path = require('path')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
@@ -77,10 +77,8 @@ module.exports = merge(baseConfig, {
     ],
     optimization: {
         minimizer: [
-            new UglifyJSPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true, // set to true if you want JS source maps
+            new TerserPlugin({
+                test: /\.js(\?.*)?$/i,
             }),
             new OptimizeCSSAssetsPlugin({})
         ],
