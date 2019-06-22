@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: yanlele/react-demo
+    image: yanle/demo
     volumes:
       - dist:/code/dist
 
@@ -14,4 +14,4 @@ services:
       - dist:/usr/share/nginx/html
 
 volumes:
-  - dist:
+  dist:
