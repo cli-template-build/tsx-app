@@ -5,13 +5,13 @@ import {
   BrowserRouter as Router,
   // HashRouter as Router,
 } from 'react-router-dom';
-import {LocaleProvider} from 'antd';
+import {ConfigProvider} from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import pageRouteConfig from './pageRouteConfig';
 
 const routes = (
     <Router>
-      <LocaleProvider locale={zhCN}>
+      <ConfigProvider locale={zhCN}>
         <Switch>
           {pageRouteConfig.map((route, index) => {
             const {path, exact, component, title} = route;
@@ -24,7 +24,7 @@ const routes = (
             />;
           })}
         </Switch>
-      </LocaleProvider>
+      </ConfigProvider>
     </Router>
 );
 
