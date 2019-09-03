@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  web:
+    image: yanle/demo
+    volumes:
+      - dist:/code/dist
+
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - dist:/usr/share/nginx/html
+
+volumes:
+  dist:
