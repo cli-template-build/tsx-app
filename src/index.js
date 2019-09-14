@@ -12,39 +12,39 @@ import routers from './routers';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
-    reducer,
-    applyMiddleware(sagaMiddleware),
+  reducer,
+  applyMiddleware(sagaMiddleware),
 );
 let sagaTask = sagaMiddleware.run(function* rootSagaFn() {
-    yield rootSaga();
+  yield rootSaga();
 });
 
 const render = Component => ReactDOM.render(
-    <AppContainer key={Math.random()}>
-        <Provider store={store}>{Component}</Provider>
-    </AppContainer>,
-    document.getElementById('app'),
+  <AppContainer key={Math.random()}>
+    <Provider store={store}>{Component}</Provider>
+  </AppContainer>,
+  document.getElementById('app'),
 );
 
 render(routers);
 
 // 热替换代码
 if (module.hot) {
-    module.hot.accept('./routers', () => {
-        const nextRoutes = require('./routers').default;
-        render(nextRoutes);
+  module.hot.accept('./routers', () => {
+    const nextRoutes = require('./routers').default;
+    render(nextRoutes);
+  });
+  module.hot.accept('./reducers', () => {
+    const nextRootReducer = require('./reducers').default;
+    store.replaceReducer(nextRootReducer);
+  });
+  module.hot.accept('./saga', () => {
+    const nextRootSaga = require('./saga').default;
+    sagaTask.cancel();
+    sagaTask.done.then(() => {
+      sagaTask = sagaMiddleware.run(function* replacedSaga() {
+        yield nextRootSaga();
+      });
     });
-    module.hot.accept('./reducers', () => {
-        const nextRootReducer = require('./reducers').default;
-        store.replaceReducer(nextRootReducer);
-    });
-    module.hot.accept('./saga', () => {
-        const nextRootSaga = require('./saga').default;
-        sagaTask.cancel();
-        sagaTask.done.then(() => {
-            sagaTask = sagaMiddleware.run(function* replacedSaga() {
-                yield nextRootSaga();
-            });
-        });
-    });
+  });
 }
