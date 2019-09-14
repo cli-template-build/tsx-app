@@ -99,6 +99,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^3.0.0",
     "poststylus": "^1.0.0",
+    "prettier-eslint-cli": "^5.0.0",
     "query-string": "^6.1.0",
     "rc-touchable": "^1.1.4",
     "react-css-modules": "^4.1.0",

@@ -1,8 +1,8 @@
-import React, {FunctionComponent, useCallback, useEffect, useState} from 'react';
-import {connect} from 'react-redux';
-import {Button, Select, Input} from 'antd';
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { Button, Select, Input } from 'antd';
 
-const {Option} = Select;
+const { Option } = Select;
 
 interface SelectItem {
   value: string;
@@ -19,10 +19,12 @@ const HomeContainer: FunctionComponent = () => {
     };
   }, [name]);
 
-  const arr: SelectItem[] = [{
-    value: 'yanle',
-    id: 1,
-  }];
+  const arr: SelectItem[] = [
+    {
+      value: 'yanle',
+      id: 1,
+    },
+  ];
 
   const handleSelectChange = useCallback((value: number) => {
     updateName(value.toString());
@@ -31,17 +33,21 @@ const HomeContainer: FunctionComponent = () => {
   const handleInputChange = (e: any) => updateName(e.target.value);
 
   return (
-      <div>
-        <p>首页内容 ~ ^.^ ~</p>
-        <Button onClick={() => console.log('123')}>click</Button>
-        <Button>你好</Button>
-        <Select style={{width: '300px'}} onChange={handleSelectChange}>
-          {arr.map((item: any) => (<Option key={item.value} value={item.id}>{item.value}</Option>))}
-        </Select>
+    <div>
+      <p>首页内容 ~ ^.^ ~</p>
+      <Button onClick={() => console.log('123')}>click</Button>
+      <Button>你好</Button>
+      <Select style={{ width: '300px' }} onChange={handleSelectChange}>
+        {arr.map((item: any) => (
+          <Option key={item.value} value={item.id}>
+            {item.value}
+          </Option>
+        ))}
+      </Select>
 
-        <br/>
-        <Input value={name} onChange={handleInputChange}/>
-      </div>
+      <br />
+      <Input value={name} onChange={handleInputChange} />
+    </div>
   );
 };
 
