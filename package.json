@@ -28,6 +28,22 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "yarn prettier",
+      "git add"
+    ],
+    "**/*.{ts,spec.js,tsx}": [
+      "tslint --fix",
+      "git add"
+    ]
+  },
   "mydependance": {
     "cz-conventional-changelog": "^2.1.0",
     "commitizen": "^3.0.7",
@@ -36,6 +52,9 @@
   },
   "homepage": "https://github.com/yanlele/tsx-app#readme",
   "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@commitlint/prompt-cli": "^7.5.0",
     "@types/node": "^10.12.29",
     "antd": "^3.23.1",
     "autoprefixer": "^9.1.0",
