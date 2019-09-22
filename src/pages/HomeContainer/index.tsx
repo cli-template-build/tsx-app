@@ -11,12 +11,12 @@ interface SelectItem {
 }
 
 interface Props {
-  count: CountModel;
+  countModel: CountModel;
   countDispatch: CountAction;
 }
 
 const HomeContainer: FC<Props> = props => {
-  const { countDispatch, count } = props;
+  const { countDispatch, countModel } = props;
 
   const [name, updateName] = useState<string>('');
 
@@ -42,7 +42,7 @@ const HomeContainer: FC<Props> = props => {
 
   return (
     <div>
-      <p>首页内容 ~ ^.^ ~ - {count}</p>
+      <p>首页内容 ~ ^.^ ~ - {countModel.count}</p>
       <br />
       <Button
         onClick={() => {
@@ -76,7 +76,7 @@ const HomeContainer: FC<Props> = props => {
 };
 
 const mapStateToProps = ({ count }: StateModels) => ({
-  count,
+  countModel: count,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
