@@ -1,10 +1,21 @@
 import { ModelConfig } from '@rematch/core';
 
-const count: ModelConfig<any, any> = {
-  state: 0,
+interface CountState {
+  count: number;
+}
+
+const defaultState: CountState = {
+  count: 0,
+};
+
+const count: ModelConfig<CountState> = {
+  state: defaultState,
   reducers: {
-    increment(state: number, payload: number) {
-      return state + payload;
+    increment(state, payload: number) {
+      return {
+        ...state,
+        count: state.count + payload,
+      };
     },
   },
   effects: {
