@@ -1,8 +1,7 @@
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { Button, Select, Input } from 'antd';
 import { RematchDispatcher, RematchDispatcherAsync } from '@rematch/core';
 import { connect } from 'react-redux';
-import { StateType } from '../../store';
 
 const { Option } = Select;
 
@@ -17,7 +16,7 @@ interface Props {
   count: number;
 }
 
-const HomeContainer: FunctionComponent<Props> = props => {
+const HomeContainer: FC<Props> = props => {
   const { increment, incrementAsync, count } = props;
 
   const [name, updateName] = useState<string>('');
@@ -77,11 +76,11 @@ const HomeContainer: FunctionComponent<Props> = props => {
   );
 };
 
-const mapStateToProps = (state: StateType) => ({
+const mapStateToProps = (state: any) => ({
   count: state.count,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   increment: dispatch.count.increment,
   incrementAsync: dispatch.count.incrementAsync,
 });

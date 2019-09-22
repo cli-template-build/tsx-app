@@ -1,6 +1,6 @@
 import { ModelConfig } from '@rematch/core';
 
-const count: ModelConfig = {
+const count: ModelConfig<any, any> = {
   state: 0,
   reducers: {
     increment(state: number, payload: number) {
