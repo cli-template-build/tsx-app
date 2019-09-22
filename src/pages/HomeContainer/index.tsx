@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { Button, Select, Input } from 'antd';
-import { RematchDispatcher, RematchDispatcherAsync } from '@rematch/core';
 import { connect } from 'react-redux';
+import { CountModels, StateModels } from '../../store/interface';
 
 const { Option } = Select;
 
@@ -11,13 +11,12 @@ interface SelectItem {
 }
 
 interface Props {
-  increment: RematchDispatcher;
-  incrementAsync: RematchDispatcherAsync;
   count: number;
+  countDispatch: CountModels;
 }
 
 const HomeContainer: FC<Props> = props => {
-  const { increment, incrementAsync, count } = props;
+  const { countDispatch, count } = props;
 
   const [name, updateName] = useState<string>('');
 
@@ -47,14 +46,14 @@ const HomeContainer: FC<Props> = props => {
       <br />
       <Button
         onClick={() => {
-          increment(1);
+          countDispatch.increment(1);
         }}>
         同步更新
       </Button>
 
       <Button
         onClick={async () => {
-          await incrementAsync(1);
+          await countDispatch.incrementAsync(1);
         }}>
         异步更新
       </Button>
@@ -76,13 +75,12 @@ const HomeContainer: FC<Props> = props => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: StateModels) => ({
   count: state.count,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  increment: dispatch.count.increment,
-  incrementAsync: dispatch.count.incrementAsync,
+  countDispatch: dispatch.count,
 });
 
 export default connect(
