@@ -1,21 +1,19 @@
 import loadableComponent from './loadableComponent';
-import React from "react";
-import {RouteComponentProps} from "react-router";
+import React from 'react';
+import { RouteComponentProps } from 'react-router';
 
 interface IPages {
   [key: string]: Function;
 }
 
 interface IExportPages {
-  [key: string]: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>
+  [key: string]: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
 }
 
-const CounterContainer = () => import('pages/CounterContainer');
 const HomeContainer = () => import('pages/HomeContainer');
 const NoMatchContainer = () => import('pages/NoMatchContainer');
 
 const pages: IPages = {
-  CounterContainer,
   HomeContainer,
   NoMatchContainer,
 };

@@ -74,7 +74,7 @@ module.exports = merge(baseConfig, {
     port: 3001,
     contentBase: paths.PATH_DIST,
     inline: true,
-    hot: true,
+    hot: false,
     open: false,
     // host: '0.0.0.0',
     disableHostCheck: true,
