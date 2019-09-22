@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { Button, Select, Input } from 'antd';
 import { connect } from 'react-redux';
-import { CountModels, StateModels } from '../../store/interface';
+import { CountAction, CountModel, StateModels } from '../../store/interface';
 
 const { Option } = Select;
 
@@ -11,8 +11,8 @@ interface SelectItem {
 }
 
 interface Props {
-  count: number;
-  countDispatch: CountModels;
+  count: CountModel;
+  countDispatch: CountAction;
 }
 
 const HomeContainer: FC<Props> = props => {
@@ -75,8 +75,8 @@ const HomeContainer: FC<Props> = props => {
   );
 };
 
-const mapStateToProps = (state: StateModels) => ({
-  count: state.count,
+const mapStateToProps = ({ count }: StateModels) => ({
+  count,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

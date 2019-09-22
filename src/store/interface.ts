@@ -1,10 +1,14 @@
 import { RematchDispatcher, RematchDispatcherAsync } from '@rematch/core';
 
-export interface CountModels {
+export interface CountAction {
   increment: RematchDispatcher;
   incrementAsync: RematchDispatcherAsync;
 }
 
-export interface StateModels {
+export interface CountModel {
   count: number;
+}
+
+export interface StateModels {
+  count: CountModel;
 }

@@ -12,6 +12,10 @@ const count: ModelConfig<CountState> = {
   state: defaultState,
   reducers: {
     increment(state, payload: number) {
+      console.log(`<${'='.repeat(100)}>`);
+      console.log(payload);
+      console.log(`<${'='.repeat(100)}>`);
+
       return {
         ...state,
         count: state.count + payload,
