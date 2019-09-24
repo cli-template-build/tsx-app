@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CountTimer from '../../components/CountTimer';
 import { StateModels } from '../../store/interface';
 import { CountAction, CountState } from '../../store/models/count';
+import CounterComponent from '../../components/CounterComponent';
 
 interface Props {
   countState: CountState;
@@ -11,14 +12,23 @@ interface Props {
 }
 
 const Counter: FC<Props> = props => {
-  const {} = props;
+  const { countAction, countState } = props;
 
   const [showTimer, updateShowTimer] = useState(false);
+
+  console.log(countState);
 
   return (
     <div>
       <Button onClick={() => updateShowTimer(true)}>点击展示timer</Button>
       <br />
+      <br />
+      <CounterComponent
+        counter={countState.count}
+        onDecrement={countAction.decrement}
+        onIncrement={countAction.increment}
+        onIncrementAsync={countAction.incrementAsync}
+      />
       <CountTimer show={showTimer} />
     </div>
   );
