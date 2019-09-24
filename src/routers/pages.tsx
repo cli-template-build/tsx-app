@@ -10,15 +10,15 @@ interface IExportPages {
   [key: string]: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
 }
 
-const HomeContainer = () => import('pages/HomeContainer');
-const NoMatchContainer = () => import('pages/NoMatchContainer');
+const HomeContainer = () => import('../pages/HomeContainer');
+const NoMatchContainer = () => import('../pages/NoMatchContainer');
+const Counter = () => import('../pages/Counter');
 
 const pages: IPages = {
   HomeContainer,
   NoMatchContainer,
+  Counter,
 };
-
-// Object.keys(pages).forEach((key: string) => loadableComponent(pages[key]));
 
 const exportPages: IExportPages = {};
 Object.keys(pages).forEach((key: string) => {
