@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react';
 import { Button } from 'antd';
+import { connect } from 'react-redux';
 import CountTimer from '../../components/CountTimer';
+import { StateModels } from '../../store/interface';
 
 const Counter: FC = () => {
   const [showTimer, updateShowTimer] = useState(false);
@@ -14,4 +16,15 @@ const Counter: FC = () => {
   );
 };
 
-export default Counter;
+const mapStateToProps = ({ count }: StateModels) => ({
+  countModel: count,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  countDispatch: dispatch.count,
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Counter);
