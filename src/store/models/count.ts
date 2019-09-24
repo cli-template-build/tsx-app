@@ -2,6 +2,8 @@ import { ModelConfig, RematchDispatcher, RematchDispatcherAsync } from '@rematch
 
 export interface CountAction {
   increment: RematchDispatcher;
+  decrement: RematchDispatcher;
+
   incrementAsync: RematchDispatcherAsync;
 }
 
