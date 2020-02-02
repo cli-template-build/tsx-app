@@ -54,9 +54,10 @@ module.exports = {
     'prefer-rest-params': 0,
 
     'react/display-name': 0,
+    'react/prop-types': 0,
     'jsx-control-statements/jsx-use-if-tag': 0, // 强制在 jsx 中使用 if 判断
     'jsx-control-statements/jsx-jcs-no-undef': 0,
-    '@typescript-eslint/no-explicit-any': 0, // 禁用 any 类型
+    '@typescript-eslint/no-explicit-any': 1, // 禁用 any 类型
     '@typescript-eslint/ban-ts-ignore': 0, // 禁用 @ts-ignore
     '@typescript-eslint/explicit-function-return-type': 0, // 在函数和类方法上需要显式的返回类型
     '@typescript-eslint/no-var-requires': 0, // 除 import 语句外，禁止使用require语句
