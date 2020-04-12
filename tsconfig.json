@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*"]
+    },
     "target": "ES2015",
     // "module": "commonjs",
     "module": "esnext", // 【注意】for react-loadable
