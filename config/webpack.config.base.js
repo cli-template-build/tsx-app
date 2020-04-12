@@ -67,11 +67,13 @@ module.exports = {
             options: {
               transpileOnly: true,
               getCustomTransformers: () => ({
-                before: [tsImportPluginFactory({
-                  libraryName: 'antd',
-                  libraryDirectory: 'lib',
-                  style: 'css',
-                })],
+                before: [
+                  tsImportPluginFactory({
+                    libraryName: 'antd',
+                    libraryDirectory: 'lib',
+                    style: 'css',
+                  }),
+                ],
               }),
               compilerOptions: {
                 module: 'es2015',
@@ -80,21 +82,15 @@ module.exports = {
           },
           {
             loader: 'eslint-loader',
-          }
+          },
         ],
-        include: [
-          paths.PATH_SRC,
-        ],
+        include: [paths.PATH_SRC],
         exclude: /node_modules/,
       },
       {
         test: /\.(?:png|jpe?g|gif|svg|woff|eot|ttf)\??.*$/,
-        use: [
-          'url-loader?limit=10000&name=img/[name]-[sha512:hash:base64:7].[ext]',
-        ],
-        include: [
-          paths.PATH_SRC,
-        ],
+        use: ['url-loader?limit=10000&name=img/[name]-[sha512:hash:base64:7].[ext]'],
+        include: [paths.PATH_SRC],
       },
     ],
   },
@@ -107,7 +103,8 @@ module.exports = {
           maxInitialRequests: 5,
           minSize: 0,
         },
-        vendor: { // 将第三方模块提取出来
+        vendor: {
+          // 将第三方模块提取出来
           test: /node_modules/,
           chunks: 'initial',
           name: 'vendor',
@@ -125,9 +122,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    modules: [
-      path.resolve(paths.PATH_SRC),
-      path.resolve('node_modules'),
-    ],
+    modules: [path.resolve(paths.PATH_SRC), path.resolve('node_modules')],
+    alias: {
+      '@src': path.resolve(__dirname, '../src'), // 这样配置后 @ 可以指向 src 目录
+    },
   },
 };
