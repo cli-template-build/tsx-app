@@ -80,9 +80,9 @@ module.exports = {
               },
             },
           },
-          {
-            loader: 'eslint-loader',
-          },
+          // {
+          //   loader: 'eslint-loader',
+          // },
         ],
         include: [paths.PATH_SRC],
         exclude: /node_modules/,
