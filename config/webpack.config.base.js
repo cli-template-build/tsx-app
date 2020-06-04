@@ -54,14 +54,36 @@ module.exports = {
         include: /node_modules/,
       },
       {
-        test: /\.(j|t)sx?$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            // 缓存上次编译结果，避免每次重新编译，减少打包时间
-            cacheDirectory: true,
+        test: /\.jsx?$/,
+        use: 'babel-loader?cacheDirectory',
+        exclude: /node_modules/,
+      },
+
+      {
+        test: /\.(ts|tsx)?$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              getCustomTransformers: () => ({
+                before: [
+                  tsImportPluginFactory({
+                    libraryName: 'antd',
+                    libraryDirectory: 'lib',
+                    style: 'css',
+                  }),
+                ],
+              }),
+              compilerOptions: {
+                module: 'es2015',
+              },
+            },
           },
-        },
+          // {
+          //   loader: 'eslint-loader',
+          // },
+        ],
         include: [paths.PATH_SRC],
         exclude: /node_modules/,
       },

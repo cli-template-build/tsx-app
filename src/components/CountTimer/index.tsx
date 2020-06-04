@@ -5,8 +5,8 @@ import styles from './index.less';
 const cx = classNames.bind(styles);
 
 interface CountTimerCheckProps {
-  show: boolean;
-  time?: number;
+  show: boolean,
+  time?: number,
 }
 
 const initialState = {
@@ -17,7 +17,8 @@ const initialState = {
 type State = Readonly<typeof initialState>;
 
 class CountTimer extends React.Component<CountTimerCheckProps, State> {
-  static defaultProps: CountTimerCheckProps = {
+
+  static readonly defaultProps: CountTimerCheckProps = {
     show: false,
     time: 5,
   };
@@ -32,8 +33,7 @@ class CountTimer extends React.Component<CountTimerCheckProps, State> {
       show,
       time,
     });
-    if (show) {
-      // 开始
+    if (show) { // 开始
       this.setIntervalTime();
     } else {
       this.clearIntervalTime();
@@ -70,7 +70,7 @@ class CountTimer extends React.Component<CountTimerCheckProps, State> {
   preveentHandle = (evt: React.MouseEvent<HTMLElement>) => {
     evt.stopPropagation();
     evt.preventDefault();
-  };
+  }
 
   render() {
     return (
