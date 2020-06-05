@@ -3,7 +3,6 @@ const paths = require('./paths');
 const tsImportPluginFactory = require('ts-import-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -120,7 +119,6 @@ module.exports = {
       exclude: /node_modules/,
       failOnError: true,
     }),
-    new ProgressBarPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],

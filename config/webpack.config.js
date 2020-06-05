@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ApiMocker = require('webpack-api-mocker2');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const paths = require('./paths');
 const baseConfig = require('./webpack.config.base.js');
@@ -41,6 +42,7 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
+    new ProgressBarPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       inject: true,
