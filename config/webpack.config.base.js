@@ -3,6 +3,7 @@ const paths = require('./paths');
 const tsImportPluginFactory = require('ts-import-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackBar = require('webpackbar');
 
 module.exports = {
   entry: {
@@ -115,6 +116,7 @@ module.exports = {
     },
   },
   plugins: [
+    new WebpackBar(),
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       failOnError: true,

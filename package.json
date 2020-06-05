@@ -11,8 +11,8 @@
     "ncu": "ncu",
     "test": "npm run test",
     "dev": "npm run start",
-    "start": "webpack-dev-server --config ./config/webpack.config.js -w --colors --display-error-details --progress",
-    "build": "NODE_ENV=production webpack --config ./config/webpack.config.prod.js --progress --colors --display-error-details",
+    "start": "webpack-dev-server --config ./config/webpack.config.js -w --colors --display-error-details --info-verbosity=none",
+    "build": "NODE_ENV=production webpack --config ./config/webpack.config.prod.js --colors --display-error-details --info-verbosity=none",
     "preview": "cd dist && http-server -p 9527 -g -o"
   },
   "repository": {
@@ -105,7 +105,6 @@
     "postcss-loader": "^3.0.0",
     "poststylus": "^1.0.0",
     "prettier-eslint-cli": "^5.0.0",
-    "progress-bar-webpack-plugin": "^2.1.0",
     "query-string": "^6.1.0",
     "rc-touchable": "^1.1.4",
     "react-css-modules": "^4.1.0",
@@ -126,7 +125,8 @@
     "webpack-api-mocker2": "^1.5.5",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "webpackbar": "^4.0.0"
   },
   "dependencies": {
     "@rematch/core": "^1.2.0",
